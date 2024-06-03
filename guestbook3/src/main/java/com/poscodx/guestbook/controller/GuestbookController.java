@@ -15,6 +15,7 @@ import com.poscodx.guestbook.vo.GuestbookVo;
 
 @Controller
 public class GuestbookController {
+
 	@Autowired
 	private GuestbookRepository guestbookRepository;
 	

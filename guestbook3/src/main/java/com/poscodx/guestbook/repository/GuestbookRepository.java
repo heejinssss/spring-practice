@@ -14,6 +14,7 @@ import com.poscodx.guestbook.vo.GuestbookVo;
 
 @Repository
 public class GuestbookRepository {
+
 	public int deleteByNoAndPassword(Long no, String password) {
 		int result = 0;
 		
@@ -62,9 +63,9 @@ public class GuestbookRepository {
 		try (
 			Connection conn = getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(
-				"select no, name, contents, date_format(reg_date, '%Y/%m/%d %H:%i:%s')" + 
-				"      from guestbook" + 
-				"  order by reg_date desc");
+				"select no, name, contents, date_format(reg_date, '%Y/%m/%d %H:%i:%s') " + 
+				"from guestbook " + 
+				"order by reg_date desc");
 			ResultSet rs = pstmt.executeQuery();
 		) {
 			
@@ -96,7 +97,7 @@ public class GuestbookRepository {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mariadb://192.168.0.203:3306/webdb?charset=utf8";
+			String url = "jdbc:mariadb://192.168.0.208:3306/webdb?charset=utf8";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
