@@ -13,25 +13,25 @@ import com.poscodx.emaillist.vo.EmaillistVo;
 
 @Controller
 public class EmaillistController {
+
 	@Autowired
 	private EmaillistRepository emaillistRepository;
-	
+
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<EmaillistVo> list = emaillistRepository.findAll();
 		model.addAttribute("list", list);
 		return "index";
 	}
-	
-	@RequestMapping(value="/add", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String add() {
 		return "add";
 	}
-	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(EmaillistVo vo) {
 		emaillistRepository.insert(vo);
 		return "redirect:/";
 	}
-	
 }
